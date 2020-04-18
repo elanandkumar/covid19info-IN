@@ -22,7 +22,7 @@ This project is a starting point for a Flutter application. This app works on an
 - Graphs: Thinking to add it.
 
 ### How it looks?
-| Tables        | Are           |
+| Main Screen        | Notifications Screen           |
 | ------------- |:-------------:|
 |![Light Mode - Home Screen](https://raw.githubusercontent.com/elanandkumar/covid19info-IN/master/docs/images/light-01.jpg)|![Light Mode(Notifications Screen)](https://raw.githubusercontent.com/elanandkumar/covid19info-IN/master/docs/images/light-02.jpg)|
 |![Dark Mode - Home Screen](https://raw.githubusercontent.com/elanandkumar/covid19info-IN/master/docs/images/dark-01.jpg)|![Dark Mode - Notifications screen](https://raw.githubusercontent.com/elanandkumar/covid19info-IN/master/docs/images/dark-02.jpg)|
