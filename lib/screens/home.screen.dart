@@ -26,6 +26,9 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   _getData() async {
+    this.setState(() {
+      showSpinner = true;
+    });
     var result = await covid19infoModal.getCovid19Summary();
     statesData = result['statewise'];
     summaryAsOfNow = statesData[0];
