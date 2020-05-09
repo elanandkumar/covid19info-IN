@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:in_covid19_info/services/covid19.data.dart';
+import 'package:in_covid19_info/utils/custom.alert.dart';
+import 'package:in_covid19_info/widgets/retry.button.dart';
 import 'package:modal_progress_hud/modal_progress_hud.dart';
 import 'package:time_formatter/time_formatter.dart';
 
@@ -15,6 +17,8 @@ class AlertsScreen extends StatefulWidget {
 
 class _AlertsScreenState extends State<AlertsScreen> {
   bool showSpinner = true;
+  bool hasError = false;
+  String loadText = 'Loading...';
   List<Alert> alerts = List();
 
   @override
@@ -32,9 +36,16 @@ class _AlertsScreenState extends State<AlertsScreen> {
           return Alert.fromJson(data);
         }).toList();
         showSpinner = false;
+        hasError = false;
+        loadText = "Loading...";
       });
     } catch (e) {
-      print('Something went wrong!');
+      CustomAlert.show(context, '');
+      this.setState(() {
+        showSpinner = false;
+        hasError = true;
+        loadText = 'Error during communication. Please try again!';
+      });
     }
   }
 
@@ -108,15 +119,35 @@ class _AlertsScreenState extends State<AlertsScreen> {
       body: SafeArea(
         child: ModalProgressHUD(
           inAsyncCall: showSpinner,
-          child: Padding(
-            padding: const EdgeInsets.all(0),
-            child: SingleChildScrollView(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: alerts.reversed.map(_buildAlert).toList(),
-              ),
-            ),
-          ),
+          child: hasError
+              ? Padding(
+                  padding: const EdgeInsets.only(top: 80.0),
+                  child: Center(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: <Widget>[
+                        Text(loadText),
+                        RetryButton(
+                          onPressed: _getData,
+                        )
+                      ],
+                    ),
+                  ),
+                )
+              : Padding(
+                  padding: const EdgeInsets.all(0),
+                  child: RefreshIndicator(
+                    onRefresh: () {
+                      return _getData();
+                    },
+                    child: SingleChildScrollView(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: alerts.reversed.map(_buildAlert).toList(),
+                      ),
+                    ),
+                  ),
+                ),
         ),
       ),
     );

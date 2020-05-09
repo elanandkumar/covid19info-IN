@@ -8,6 +8,11 @@ const List<Map<String, String>> FAQ_DATA = [
         'Data source for this project is `covid19India`. They have great api and is open source. For more details, feel free to visit the link https://github.com/covid19india/covid19india-react'
   },
   {
+    'question': "Where can I find the source code?",
+    'answer':
+        "It is on github. Here is the link: https://github.com/elanandkumar/covid19info-IN/"
+  },
+  {
     'question': "Why does covid19india.org have more positive count than MoH?",
     'answer':
         "MoHFW updates the data at a scheduled time. However, we update them based on state press bulletins, official (CM, Health M) handles, PBI, Press Trust of India, ANI reports. These are generally more recent."

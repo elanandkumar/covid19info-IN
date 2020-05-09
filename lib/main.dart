@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:in_covid19_info/screens/alerts.screen.dart';
+import 'package:in_covid19_info/screens/welcome.screen.two.dart';
 import 'package:in_covid19_info/screens/welcome.screen.dart';
 
 void main() {
@@ -45,7 +46,7 @@ class Covid19InfoApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       initialRoute: WelcomeScreen.id,
       routes: {
-        WelcomeScreen.id: (context) => WelcomeScreen(),
+        WelcomeScreenTwo.id: (context) => WelcomeScreen(),
         AlertsScreen.id: (context) => AlertsScreen(),
       },
     );

@@ -2,7 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:in_covid19_info/widgets/urlLauncher.dart';
 
 const List<Map<String, String>> URLS_LIST = [
-  {'url': 'https://covid19india.org', 'label': 'Original Creator website'},
+  {
+    'url': 'https://github.com/elanandkumar/covid19info-IN/',
+    'label': 'Source code'
+  },
+  {'url': 'https://covid19india.org', 'label': 'Original Creator\'s website'},
   {
     'url': 'https://www.mohfw.gov.in/pdf/coronvavirushelplinenumber.pdf',
     'label': 'HELPLINE NUMBERS [by State]',

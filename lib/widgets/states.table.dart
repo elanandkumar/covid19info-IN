@@ -18,7 +18,11 @@ class _StatesTableState extends State<StatesTable> {
 
     _data.forEach((d) {
       dataRows.add(DataRow(cells: [
-        DataCell(Text(d['state'], style: TextStyle(fontSize: 16))),
+        DataCell(Text(
+          d['state'],
+          style: TextStyle(fontSize: 16),
+          textAlign: TextAlign.right,
+        )),
         DataCell(Text(d['confirmed'],
             style: TextStyle(color: Colors.red, fontSize: 16))),
         DataCell(Text(d['recovered'],
@@ -50,8 +54,10 @@ class _StatesTableState extends State<StatesTable> {
     return DataTable(
       sortColumnIndex: _sortColumnIndex,
       sortAscending: _sortAscending,
+      horizontalMargin: 0,
       columns: [
         DataColumn(
+          numeric: true,
           onSort: (columnIndex, sortAscending) {
             this.setState(() {
               _sortColumnIndex = columnIndex;
