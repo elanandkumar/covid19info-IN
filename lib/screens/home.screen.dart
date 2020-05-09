@@ -31,30 +31,31 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   _getData() async {
-    this.setState(() {
-      showSpinner = true;
-      hasError = false;
-      preloadingText = "Loading...";
-    });
+    try {
+      this.setState(() {
+        showSpinner = true;
+        hasError = false;
+        preloadingText = "Loading...";
+      });
 
-    var result = await covid19infoModal.getCovid19Summary();
-    if (result["error"] == true) {
-      CustomAlert.show(context, result["statusCode"]);
+      var result = await covid19infoModal.getCovid19Summary();
+
+      statesData = result['statewise'];
+      summaryAsOfNow = statesData[0];
+      casesTimeSeries = result['cases_time_series'];
+
+      this.setState(() {
+        hasError = false;
+        showSpinner = false;
+      });
+    } catch (e) {
+      CustomAlert.show(context, '');
       this.setState(() {
         showSpinner = false;
         hasError = true;
         preloadingText = "Error during communication. Please try again!";
       });
-      return null;
     }
-    statesData = result['statewise'];
-    summaryAsOfNow = statesData[0];
-    casesTimeSeries = result['cases_time_series'];
-
-    this.setState(() {
-      hasError = false;
-      showSpinner = false;
-    });
   }
 
   @override
