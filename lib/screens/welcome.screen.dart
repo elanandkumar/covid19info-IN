@@ -4,6 +4,7 @@ import 'package:in_covid19_info/screens/faq.screen.dart';
 import 'package:in_covid19_info/screens/helpful.links.screen.dart';
 import 'package:in_covid19_info/screens/home.screen.dart';
 import 'package:in_covid19_info/widgets/FABBottomAppBar.dart';
+import '../widgets/tab-bar.dart';
 
 PageController _pageController = PageController(initialPage: 0, keepPage: true);
 
@@ -69,6 +70,16 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
             color: Colors.grey.shade100,
           ),
         ),
+        actions: <Widget>[
+          IconButton(
+              icon: Icon(
+                Icons.notifications_active,
+                color: Colors.white,
+              ),
+              onPressed: () {
+                Navigator.pushNamed(context, AlertsScreen.id);
+              }),
+        ],
       ),
       body: SafeArea(
         child: PageView(
@@ -77,27 +88,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
           children: _getSelectedPage(),
         ),
       ),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-      floatingActionButton: FloatingActionButton(
-        backgroundColor: Theme.of(context).colorScheme.primaryVariant,
-        onPressed: () {
-          Navigator.pushNamed(context, AlertsScreen.id);
-        },
-        child: Icon(
-          Icons.notifications_active,
-          color: Colors.white,
-        ),
-        elevation: 5.0,
-      ),
-      bottomNavigationBar: FABBottomAppBar(
-        backgroundColor: Theme.of(context).colorScheme.primary,
-        onTabSelected: _selectedTab,
-        notchedShape: CircularNotchedRectangle(),
-        selectedColor: Theme.of(context).colorScheme.onPrimary,
-        color: Theme.of(context).colorScheme.secondary,
-        centerItemText: 'Notifications',
-        items: _navItemBuilder(),
-      ),
+      bottomNavigationBar: CustomTabBar(onTabSelected: _selectedTab),
     );
   }
 }

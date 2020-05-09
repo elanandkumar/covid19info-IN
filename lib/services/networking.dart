@@ -8,11 +8,13 @@ class NetworkHelper {
 
   Future getData() async {
     http.Response response = await http.get(url);
-    if(response.statusCode == 200) {
+    if (response.statusCode == 200) {
       String data = response.body;
       return jsonDecode(data);
     } else {
-      print(response.statusCode);
+      bool error = true;
+      String statusCode = response.statusCode.toString();
+      return {"error": error, "statusCode": statusCode};
     }
   }
 }

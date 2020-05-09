@@ -50,14 +50,14 @@ class MiniLineChart extends StatelessWidget {
         double dailyConfirmed = double.parse(d['dailyconfirmed']);
         double dailyRecovered = double.parse(d['dailyrecovered']);
         double dailyDeceased = double.parse(d['dailydeceased']);
-        print('$dailyConfirmed || $dailyRecovered || $dailyDeceased');
+        // print('$dailyConfirmed || $dailyRecovered || $dailyDeceased');
         switch (label) {
           case "Confirmed":
             value = dailyConfirmed;
             break;
           case "Active":
             value = dailyConfirmed - dailyRecovered - dailyDeceased;
-            print('daily active $value');
+            // print('daily active $value');
             break;
           case "Recovered":
             value = double.parse(d['totalrecovered']);

@@ -1,7 +1,7 @@
-☐ Add  statewise data
-☐ Refactor to different widgets
-☐ Design notification center
-☐ Design FAQ page
-☐ Add floating back button to faq and links page
-☐ When coming back to homepage, highlight the home tab
-☐ add more tabs to the bottom navigation
+TODO:
+    ✔ Bottom navigation animation @done(20-05-09 22:04)
+    ☐ Graphs?
+    ✔ Fix the table view @done(20-05-09 22:04)
+    ✔ Add pull to refresh on whole page @done(20-05-09 22:04)
+    ☐ Look for device notification
+    ✔ Update FAQ/Links @done(20-05-09 22:04)
